@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { Route, Switch } from "react-router-dom";
-import Error from "./components/404/404";
+import Error from "./components/Error/Error";
 import ForgotPassword from "./components/Auth/ForgotPassword";
 import Signin from "./components/Auth/Signin";
 import Signup from "./components/Auth/Signup";
