@@ -18,7 +18,6 @@ function Dashboard() {
     folderId,
     state.folder
   );
-  console.log(childFiles);
 
   return (
     <Fragment>

@@ -98,7 +98,7 @@ export default function AddFile({ currentFolder }) {
         <FaFileUpload />
         <input
           onChange={handleUpload}
-          style={{ opacity: 0, position: "absolute", left: "-10000px" }}
+          style={{ opacity: 0, position: "absolute", left: "-9999px" }}
           type="file"
         />
       </label>
