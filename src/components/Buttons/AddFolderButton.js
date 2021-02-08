@@ -4,6 +4,7 @@ import { Button } from "react-bootstrap";
 import { FaFolderPlus } from "react-icons/fa";
 import { database } from "../../config/firebase";
 import { AuthContext } from "../../contexts/AuthContext";
+import { ROOT_FOLDER } from "../../hooks/useFolder";
 
 function AddFolderButton({ currentFolder }) {
   const { currentUser } = useContext(AuthContext);
@@ -21,11 +22,20 @@ function AddFolderButton({ currentFolder }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (currentFolder == null) return;
+
+    const path = [...currentFolder.path];
+
+    if (currentFolder !== ROOT_FOLDER) {
+      path.push({ name: currentFolder.name, id: currentFolder.id });
+    }
+
     database.folders.add({
       name: name,
       parentId: currentFolder.id,
       userId: currentUser.uid,
-      //   path,
+      path: path,
       createdAt: database.currentTime(),
     });
     setName("");
@@ -37,7 +47,7 @@ function AddFolderButton({ currentFolder }) {
       <Button
         variant="outline-success"
         onClick={openAddFolderModal}
-        className="mt-4"
+        className="mt-2"
       >
         <FaFolderPlus />
       </Button>

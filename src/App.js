@@ -15,11 +15,12 @@ function App() {
       <Switch>
         <PrivateRoute path="/" exact component={Dashboard} />
         <PrivateRoute path="/profile" component={Profile} />
+        <PrivateRoute exact path="/folder/:folderId" component={Dashboard} />
         <PrivateRoute path="/update-profile" component={UpdateProfile} />
         <Route path="/signin" component={Signin} />
         <Route path="/forgot-password" component={ForgotPassword} />
         <Route path="/signup" component={Signup} />
-        <Route component={Error} />
+        {/* <Route component={Error} /> */}
       </Switch>
     </Fragment>
   );
